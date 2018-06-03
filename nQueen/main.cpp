@@ -9,6 +9,7 @@
 #include <cstdio>
 #include <algorithm>
 #define GRID 30
+#define INF 1000000
 using namespace std;
 
 
@@ -18,17 +19,18 @@ typedef struct{
     int checkValid[GRID][GRID];
 }BOARD;
 
-int maxWeight,minWeight,queenTotal;
+int maxWeight,n;
 int weight[GRID][GRID];
+int rowMax[GRID];
 
-void calculateQueen(BOARD board,int n){
-    printf("%d\n",board.row);
+void calculateQueen(BOARD board){
+    //printf("%d\n",board.row);
     if(board.row==n){
-        queenTotal++;
         maxWeight=max(maxWeight,board.cost);
-        minWeight=min(minWeight,board.cost);
+        //minWeight=min(minWeight,board.cost);
         return;
     }
+    if(board.cost+rowMax[board.row]<=maxWeight) return;
     int i;
     int x,y;
     BOARD temp;
@@ -49,14 +51,14 @@ void calculateQueen(BOARD board,int n){
             temp.checkValid[x][y]=0;
             x++;y--;
         }
-        calculateQueen(temp,n);
+        calculateQueen(temp);
         }
     }
 }
 
 int main()
 {
-    int n,i,j;
+    int i,j;
     BOARD board;
     while(1){
         printf("enter n*n board's n: ");
@@ -68,12 +70,28 @@ int main()
                 scanf("%d",&weight[i][j]);
             }
         }
-        maxWeight=0; minWeight=GRID*GRID*10; queenTotal=0;
+        for(i=0;i<n;i++) rowMax[i]=-INF;
+        for(i=0;i<n;i++){
+            for(j=0;j<n;j++){
+                rowMax[i]=max(rowMax[i],weight[i][j]);
+            }
+        }
+        for(i=n-2;i>=0;i--) rowMax[i]+=rowMax[i+1];
         for(int i=0;i<GRID;i++) for(int j=0;j<GRID;j++) board.checkValid[i][j]=1;
         board.row=0;board.cost=0;
-        calculateQueen(board,n);
+        maxWeight=0;
+        calculateQueen(board);
         printf("The maximum weight of %d queens: %d\n",n,maxWeight);
-        printf("The minimum weight of %d queens: %d\n",n,minWeight);
+        for(i=0;i<n;i++){
+            for(j=0;j<n;j++){
+                weight[i][j]=-weight[i][j];
+            }
+        }
+        for(int i=0;i<GRID;i++) for(int j=0;j<GRID;j++) board.checkValid[i][j]=1;
+        board.row=0;board.cost=0;
+        maxWeight=-GRID*GRID*10;
+        calculateQueen(board);
+        printf("The minimum weight of %d queens: %d\n",n,-maxWeight);
     }
     return 0;
 }

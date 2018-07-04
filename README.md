@@ -12,10 +12,12 @@ Enter n, how large you want your chessboard to be (n*n)
 
 Enter the  weight of each grid in the board in order
 if it is 4*4
+```
 * * * *
 * * * *
 * * * *
 * * * *
+```
 recommend to enter the weights in the format like this
 
 ### Step 3 ###

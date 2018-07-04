@@ -26,6 +26,8 @@
 		61AB7E8A20C3B17A00E84008 /* nQueen */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = nQueen; sourceTree = BUILT_PRODUCTS_DIR; };
 		61AB7E8D20C3B17A00E84008 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		61AB7E9420C3D76E00E84008 /* test.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = test.in; sourceTree = "<group>"; };
+		61EAF32320ED7CA400D16708 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		61FD132C20ED03C0002E4C2E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +44,7 @@
 		61AB7E8120C3B17900E84008 = {
 			isa = PBXGroup;
 			children = (
+				61EAF32320ED7CA400D16708 /* README.md */,
 				61AB7E9420C3D76E00E84008 /* test.in */,
 				61AB7E8C20C3B17A00E84008 /* nQueen */,
 				61AB7E8B20C3B17A00E84008 /* Products */,
@@ -60,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				61AB7E8D20C3B17A00E84008 /* main.cpp */,
+				61FD132C20ED03C0002E4C2E /* README.md */,
 			);
 			path = nQueen;
 			sourceTree = "<group>";
